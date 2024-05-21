@@ -5,13 +5,12 @@ quality-check:
   stage: quality-check
   image:
     name : harbor.merapi.javan.id/tools/php8.3-laravel-sonar
-    entrypoint: [""]
   cache:
     paths:
       - .sonar/cache
   script:
     - cp .env.example .env
-    - composer install --no-interaction --optimize-autoloader
+    - composer install --no-interaction --optimize-autoloader --quiet
     - php artisan key:gen
     - cp .env .env.testing
     - composer qc
