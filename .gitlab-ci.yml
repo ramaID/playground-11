@@ -1,0 +1,23 @@
+stages:
+  - quality-check
+
+quality-check:
+  stage: quality-check
+  image:
+    name : harbor.merapi.javan.id/tools/php8.3-laravel-sonar
+    entrypoint: [""]
+  cache:
+    paths:
+      - .sonar/cache
+  script:
+    - cp .env.example .env
+    - composer install --no-interaction --optimize-autoloader
+    - php artisan key:gen
+    - cp .env .env.testing
+    - composer qc
+    - cp sonar-project.properties.example sonar-project.properties
+    - sonar-scanner -Dsonar.login=$SONAR_LOGIN_TOKEN
+  only:
+    - main
+  tags:
+    - merapi
