@@ -16,7 +16,7 @@ quality-check:
     - cp .env .env.testing
     - composer qc
     - cp sonar-project.properties.example sonar-project.properties
-    - sonar-scanner -Dsonar.login=$SONAR_LOGIN_TOKEN
+    - sonar-scanner -Dsonar.login=$SONAR_LOGIN_TOKEN -Dsonar.host.url=$SONAR_HOST_URL
   only:
     - main
   tags:
