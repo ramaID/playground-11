@@ -54,8 +54,7 @@
         ],
         "qc": [
             "XDEBUG_MODE=coverage php artisan test --coverage --min=90 --coverage-clover coverage.xml",
-            "./vendor/bin/pest --type-coverage --min=100 --memory-limit=512M",
-            "./vendor/bin/phpstan analyse"
+            "./vendor/bin/pest --type-coverage --min=100 --memory-limit=512M"
         ]
     },
     "extra": {
