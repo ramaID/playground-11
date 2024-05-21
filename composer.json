@@ -11,12 +11,14 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^2.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-laravel": "^2.4",
+        "pestphp/pest-plugin-type-coverage": "^2.8",
         "spatie/laravel-ignition": "^2.4"
     },
     "autoload": {
@@ -49,6 +51,11 @@
         ],
         "test": [
             "XDEBUG_MODE=coverage php artisan test --coverage"
+        ],
+        "qc": [
+            "XDEBUG_MODE=coverage php artisan test --coverage --min=90 --coverage-clover coverage.xml",
+            "./vendor/bin/pest --type-coverage --min=100 --memory-limit=512M",
+            "./vendor/bin/phpstan analyse"
         ]
     },
     "extra": {
