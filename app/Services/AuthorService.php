@@ -4,23 +4,21 @@ namespace App\Services;
 
 use App\DTO\AuthorData;
 use App\Models\Author;
-use InvalidArgumentException;
-use Illuminate\Database\Eloquent\InvalidCastException;
+use Illuminate\Database\Eloquent\MassAssignmentException;
 
 class AuthorService
 {
     /**
      * @param AuthorData $data
-     * @return array<string, Author|int|string>
-     * @throws InvalidArgumentException
-     * @throws InvalidCastException
+     * @return array
+     * @throws MassAssignmentException
      */
     public function createAuthor(AuthorData $data): array
     {
-        $author = new Author();
-        $author->name = $data->name;
-        $author->biography = $data->biography;
-        $author->save();
+        $author = Author::query()->create([
+            'name' => $data->name,
+            'biography' => $data->biography,
+        ]);
 
         return [
             'message' => 'Author created successfully',
