@@ -28,8 +28,15 @@ class StoreAuthorRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return AuthorData
+     */
     public function toDto(): AuthorData
     {
-        return new AuthorData($this->input('name', ''), $this->input('biography', null));
+        return new AuthorData(
+            null,
+            $this->input('name', ''),
+            $this->input('biography', null)
+        );
     }
 }

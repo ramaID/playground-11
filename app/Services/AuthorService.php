@@ -4,26 +4,34 @@ namespace App\Services;
 
 use App\DTO\AuthorData;
 use App\Models\Author;
-use Illuminate\Database\Eloquent\MassAssignmentException;
 
 class AuthorService
 {
-    /**
-     * @param AuthorData $data
-     * @return array
-     * @throws MassAssignmentException
-     */
-    public function createAuthor(AuthorData $data): array
+    public function getAll()
     {
-        $author = Author::query()->create([
-            'name' => $data->name,
-            'biography' => $data->biography,
-        ]);
+        return Author::all();
+    }
 
-        return [
-            'message' => 'Author created successfully',
-            'data' => $author,
-            'status' => 201,
-        ];
+    public function getById($id)
+    {
+        return Author::query()->findOrFail($id);
+    }
+
+    public function create(AuthorData $data)
+    {
+        return Author::query()->create($data->toArray());
+    }
+
+    public function update(AuthorData $data)
+    {
+        $author = Author::query()->findOrFail($data->id);
+        $author->update($data->toArray());
+        return $author;
+    }
+
+    public function delete($id): void
+    {
+        $author = Author::query()->findOrFail($id);
+        $author->delete();
     }
 }

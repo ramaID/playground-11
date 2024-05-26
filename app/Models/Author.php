@@ -9,4 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory, HasUlids;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = ['name', 'biography'];
 }

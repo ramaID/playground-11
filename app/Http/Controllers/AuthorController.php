@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAuthorRequest;
+use App\Http\Requests\UpdateAuthorRequest;
 use App\Services\AuthorService;
 
 class AuthorController extends Controller
@@ -12,13 +13,33 @@ class AuthorController extends Controller
     ) {
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAuthorRequest $request): \Illuminate\Http\JsonResponse
+    public function index()
     {
-        $result = $this->service->createAuthor($request->toDto());
+        $authors = $this->service->getAll();
+        return response()->json($authors);
+    }
 
-        return response()->json($result, 201);
+    public function show($id)
+    {
+        $author = $this->service->getById($id);
+        return response()->json($author);
+    }
+
+    public function store(StoreAuthorRequest $request)
+    {
+        $author = $this->service->create($request->toDto());
+        return response()->json($author, 201);
+    }
+
+    public function update(UpdateAuthorRequest $request, $id)
+    {
+        $author = $this->service->update($request->toDto());
+        return response()->json($author);
+    }
+
+    public function destroy($id)
+    {
+        $this->service->delete($id);
+        return response()->json(null, 204);
     }
 }
