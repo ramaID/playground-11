@@ -11,7 +11,12 @@ final class AuthorData
     ) {
     }
 
-    public function toArray()
+    /**
+     * Convert the DTO to an array
+     *
+     * @return array
+     */
+    public function toArray(): array
     {
         return [
             'name' => $this->name,
