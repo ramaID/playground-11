@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Unit\Architecture;
-
 arch('globals')
     ->expect(['dd', 'dump'])
     ->not->toBeUsed()

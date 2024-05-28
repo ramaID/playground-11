@@ -12,6 +12,10 @@ beforeEach(function () {
     App::instance(AuthorService::class, $this->service);
 });
 
+afterEach(function () {
+    Mockery::close();
+});
+
 it('gets all authors', function () {
     $this->service->shouldReceive('getAll')->andReturn(collect(['author1', 'author2']));
 
