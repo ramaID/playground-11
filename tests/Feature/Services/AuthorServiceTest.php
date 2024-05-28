@@ -18,7 +18,6 @@ test('get all authors', function () {
     $authors = collect([$this->author, $author2]);
 
     $this->mockAuthor->shouldReceive('all')->andReturn($authors);
-    $this->app->instance('alias:\App\Models\Author', $this->mockAuthor);
 
     $authorService = new AuthorService();
     $result = $authorService->getAll();
@@ -29,7 +28,6 @@ test('get all authors', function () {
 
 it('can get author by id', function () {
     $this->mockAuthor->shouldReceive('findOrFail')->with(1)->andReturn($this->author);
-    $this->app->instance('alias:\App\Models\Author', $this->mockAuthor);
 
     $authorService = new AuthorService();
     $result = $authorService->getById(1);
@@ -39,7 +37,6 @@ it('can get author by id', function () {
 
 it('can store new author', function () {
     $this->mockAuthor->shouldReceive('create')->andReturn($this->author);
-    $this->app->instance('alias:\App\Models\Author', $this->mockAuthor);
 
     $authorService = new AuthorService();
     $result = $authorService->create(new \App\DTO\AuthorData(null, 'John Doe', 'An accomplished author.'));
