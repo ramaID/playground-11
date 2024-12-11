@@ -28,9 +28,6 @@ class StoreAuthorRequest extends FormRequest
         ];
     }
 
-    /**
-     * @return AuthorData
-     */
     public function toDto(): AuthorData
     {
         return new AuthorData(
