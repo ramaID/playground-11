@@ -15,7 +15,7 @@ jobs:
 
     container:
       image: ramageek/image:php8.3-laravel-dev
-      options: --workdir /var/www
+      options: --workdir /var/www/html
 
     steps:
       - uses: actions/checkout@v4
