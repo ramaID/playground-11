@@ -1,4 +1,4 @@
-sonar.projectKey=playground-11
+sonar.projectKey=playground-sonar-{nama}
 
 sonar.sources=app
 sonar.php.coverage.reportPaths=coverage.xml
