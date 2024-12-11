@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-
 jobs:
   quality-check:
     runs-on: ubuntu-latest
@@ -18,15 +15,11 @@ jobs:
       options: --workdir /var/www/html
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          path: /var/www/playground-11
+      - name: PWD
+        run: pwd
 
       - name: LS
-        run: cd /var/www/playground-11 && ls -al
-
-      - name: LS
-        run: ls -al
+        run: cd /var/www/html && ls -al
 
       - name: Copy .env.example to .env
         run: cp .env.example .env
