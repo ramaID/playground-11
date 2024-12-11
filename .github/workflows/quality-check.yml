@@ -14,10 +14,11 @@ jobs:
       image: ramageek/image:php8.3-laravel-dev
 
     steps:
-      - name: LS
-        run: ls -la
+      - name: Clone
+        run: git clone https://github.com/ramaID/playground-11.git
 
-      - uses: actions/checkout@v4
+      - name: Change directory
+        run: cd playground-11
 
       - name: Copy .env.example to .env
         run: cp .env.example .env
