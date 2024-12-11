@@ -6,19 +6,24 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
 jobs:
   quality-check:
     runs-on: ubuntu-latest
 
     container:
       image: ramageek/image:php8.3-laravel-dev
+      options: --workdir /var/www
 
     steps:
-      - name: PWD
-        run: pwd && ls -al
+      - uses: actions/checkout@v4
+        with:
+          path: /var/www/playground-11
 
-      - name: Clone
-        run: cd /var/www && git clone https://github.com/ramaID/playground-11.git && cd playground-11
+      - name: LS
+        run: cd /var/www/playground-11 && ls -al
 
       - name: LS
         run: ls -al
