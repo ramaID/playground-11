@@ -1,0 +1,38 @@
+name: Quality Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ramageek/php8.3-laravel-dev
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --optimize-autoloader --quiet
+
+      - name: Generate application key
+        run: php artisan key:gen
+
+      - name: Copy .env to .env.testing
+        run: cp .env .env.testing
+
+      - name: Run Composer quality check
+        run: composer qc
+
+      - name: Copy sonar-project.properties.example to sonar-project.properties
+        run: cp sonar-project.properties.example sonar-project.properties
+
+      - name: Run Sonar Scanner
+        run: sonar-scanner -Dsonar.login=${{ secrets.SONAR_LOGIN_TOKEN }} -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
