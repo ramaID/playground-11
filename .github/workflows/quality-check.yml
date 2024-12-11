@@ -14,13 +14,14 @@ jobs:
       image: ramageek/image:php8.3-laravel-dev
       volumes:
         - ${{ github.workspace }}:/opt
+      options: --workdir /opt  # Set default working directory
 
     steps:
       - name: PWD
         run: pwd && ls -al && whoami
 
       - name: Change directory
-        run: cd /opt && ls -al
+        run: ls -al
 
       - name: Clone
         run: git clone https://github.com/ramaID/playground-11.git
