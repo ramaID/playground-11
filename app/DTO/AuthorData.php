@@ -8,8 +8,7 @@ final class AuthorData
         public ?string $id,
         public string $name,
         public ?string $biography,
-    ) {
-    }
+    ) {}
 
     public function toArray()
     {
