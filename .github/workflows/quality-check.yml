@@ -15,7 +15,10 @@ jobs:
 
     steps:
       - name: PWD
-        run: pwd && ls -al
+        run: pwd && ls -al && whoami
+
+      - name: Change directory
+        run: cd /opt && ls -al
 
       - name: Clone
         run: git clone https://github.com/ramaID/playground-11.git
