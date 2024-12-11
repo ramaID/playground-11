@@ -20,8 +20,8 @@ jobs:
       - name: Clone
         run: cd /var/www/html && git clone https://github.com/ramaID/playground-11.git
 
-      - name: Change directory
-        run: cd playground-11
+      - name: LS
+        run: ls -al
 
       - name: Copy .env.example to .env
         run: cp .env.example .env
