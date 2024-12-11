@@ -13,11 +13,10 @@ jobs:
     container:
       image: ramageek/image:php8.3-laravel-dev
 
-    permissions:
-      contents: read
-      actions: write
-
     steps:
+      - name: LS
+        run: ls -la
+
       - uses: actions/checkout@v4
 
       - name: Copy .env.example to .env
