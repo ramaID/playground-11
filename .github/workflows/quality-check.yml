@@ -2,8 +2,9 @@ name: Quality Check
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   quality-check:
@@ -17,8 +18,7 @@ jobs:
       actions: write
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Copy .env.example to .env
         run: cp .env.example .env
