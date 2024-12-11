@@ -12,6 +12,10 @@ jobs:
     container:
       image: ramageek/image:php8.3-laravel-dev
 
+    permissions:
+      contents: read
+      actions: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
