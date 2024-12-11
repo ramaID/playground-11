@@ -19,7 +19,7 @@ jobs:
         run: pwd
 
       - name: LS
-        run: cd /var/www/html && ls -al
+        run: cd /var/www && git clone https://github.com/ramaID/playground-11.git html && cd html && ls
 
       - name: Copy .env.example to .env
         run: cp .env.example .env
