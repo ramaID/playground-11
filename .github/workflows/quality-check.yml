@@ -18,7 +18,7 @@ jobs:
         run: pwd && ls -al
 
       - name: Clone
-        run: cd /var/www/html && git clone https://github.com/ramaID/playground-11.git
+        run: cd /var/www && git clone https://github.com/ramaID/playground-11.git && cd playground-11
 
       - name: LS
         run: ls -al
