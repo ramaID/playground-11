@@ -21,7 +21,7 @@ jobs:
         run: pwd && ls -al && whoami
 
       - name: Change directory
-        run: ls -al
+        run: cd /opt && ls -al
 
       - name: Clone
         run: git clone https://github.com/ramaID/playground-11.git
