@@ -2,10 +2,11 @@
 
 use App\Services\AuthorService;
 use Illuminate\Support\Facades\App;
+
+use function Pest\Laravel\delete;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 use function Pest\Laravel\put;
-use function Pest\Laravel\delete;
 
 beforeEach(function () {
     $this->service = Mockery::mock(AuthorService::class);
