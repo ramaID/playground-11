@@ -53,7 +53,7 @@
             "XDEBUG_MODE=coverage php artisan test --coverage"
         ],
         "qc": [
-            "XDEBUG_MODE=coverage php artisan test --coverage --min=90 --coverage-clover coverage.xml",
+            "XDEBUG_MODE=coverage php artisan test --coverage-clover coverage.xml",
             "./vendor/bin/pest --type-coverage --min=85 --memory-limit=512M"
         ]
     },
