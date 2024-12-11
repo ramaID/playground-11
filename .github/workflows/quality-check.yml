@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ramageek/php8.3-laravel-dev
+      image: ramageek/image:php8.3-laravel-dev
 
     steps:
       - name: Checkout code
