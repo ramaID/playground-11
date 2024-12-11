@@ -15,7 +15,8 @@ class AuthorController extends Controller
 
     public function index()
     {
-        $authors = $this->service->getAll();
+        $authors = $this->service
+        ->getAll();
         return response()->json($authors);
     }
 
