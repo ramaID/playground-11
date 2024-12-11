@@ -12,6 +12,8 @@ jobs:
 
     container:
       image: ramageek/image:php8.3-laravel-dev
+      volumes:
+        - ${{ github.workspace }}:/opt
 
     steps:
       - name: PWD
