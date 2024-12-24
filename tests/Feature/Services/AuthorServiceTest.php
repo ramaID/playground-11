@@ -19,7 +19,7 @@ test('get all authors', function () {
 
     $this->mockAuthor->shouldReceive('all')->andReturn($authors);
 
-    $authorService = new AuthorService();
+    $authorService = new AuthorService;
     $result = $authorService->getAll();
 
     expect($result)->toBeInstanceOf(Illuminate\Support\Collection::class);
@@ -29,7 +29,7 @@ test('get all authors', function () {
 it('can get author by id', function () {
     $this->mockAuthor->shouldReceive('findOrFail')->with(1)->andReturn($this->author);
 
-    $authorService = new AuthorService();
+    $authorService = new AuthorService;
     $result = $authorService->getById(1);
 
     expect($result)->toBeInstanceOf(Author::class);
@@ -38,7 +38,7 @@ it('can get author by id', function () {
 it('can store new author', function () {
     $this->mockAuthor->shouldReceive('create')->andReturn($this->author);
 
-    $authorService = new AuthorService();
+    $authorService = new AuthorService;
     $result = $authorService->create(new \App\DTO\AuthorData(null, 'John Doe', 'An accomplished author.'));
 
     expect($result)->toBeInstanceOf(Author::class);
@@ -51,7 +51,7 @@ it('can update an author', function () {
     $this->mockAuthor->shouldReceive('update')->once();
 
     $dto = new \App\DTO\AuthorData(1, 'John Doe', 'An accomplished author.');
-    $authorService = new AuthorService();
+    $authorService = new AuthorService;
     $result = $authorService->update($dto);
 
     expect($result)->toBeInstanceOf(Author::class);
@@ -63,6 +63,6 @@ it('can delete an author', function () {
     $this->mockAuthor->shouldReceive('findOrFail')->with($id)->andReturnSelf();
     $this->mockAuthor->shouldReceive('delete')->once();
 
-    $authorService = new AuthorService();
+    $authorService = new AuthorService;
     $authorService->delete($id);
 });

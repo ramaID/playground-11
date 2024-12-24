@@ -26,6 +26,7 @@ class AuthorService
     {
         $author = Author::findOrFail($data->id);
         $author->update($data->toArray());
+
         return $author;
     }
 
