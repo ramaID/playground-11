@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
 
 jobs:
   quality-check:
@@ -16,7 +18,7 @@ jobs:
 
     steps:
       - name: Clone Repository
-        run: cd /var/www && rm -rf html && git clone https://github.com/ramaID/playground-11.git html && cd html && ls
+        run: cd /var/www && rm -rf html && git clone https://github.com/ramaID/playground-11.git html && cd html && git checkout fix/demo-hapus-test && ls
 
       - name: Verify Clone
         run: |

@@ -6,9 +6,6 @@ use App\DTO\AuthorData;
 
 class UpdateAuthorRequest extends StoreAuthorRequest
 {
-    /**
-     * @return AuthorData
-     */
     public function toDto(): AuthorData
     {
         return new AuthorData(
